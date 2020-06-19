@@ -4,9 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GTBench"
+        xmlns:hm="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
+        xmlns:svg="clr-namespace:SharpVectors.Converters;assembly=SharpVectors.Converters.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="GTBench" 
+        Height="450" Width="800" Closing="Window_Closing">
     <Grid>
-        
+        <Frame x:Name="frame" Margin="50,0,0,0" NavigationUIVisibility="Hidden"/>
+        <hm:HamburgerMenu x:Name="menu" MenuIconColor="White" SelectionIndicatorColor="LightGray" MenuItemForeground="White" Background="SlateGray" HorizontalAlignment="Left">
+            <hm:HamburgerMenuItem Name="home" Text="Home" Icon="{svg:SvgImage Source=Assets/iconmonstr-home-6.svg}" Margin="0,5" Selected="menuItem_Selected" />
+            <hm:HamburgerMenuItem Name="translate" Text="Translate" Icon="{svg:SvgImage Source=Assets/iconmonstr-language-3.svg}" Margin="0,5" Selected="menuItem_Selected"/>
+            <hm:HamburgerMenuItem Name="glossary" Text="Glossary" Icon="{svg:SvgImage Source=Assets/iconmonstr-book-25.svg}" Margin="0,5" Selected="menuItem_Selected"/>
+            <hm:HamburgerMenuItem Name="settings" Text="Settings" Icon="{svg:SvgImage Source=Assets/iconmonstr-gear-6.svg}" Margin="0,5" Selected="menuItem_Selected"/>
+        </hm:HamburgerMenu>
     </Grid>
 </Window>

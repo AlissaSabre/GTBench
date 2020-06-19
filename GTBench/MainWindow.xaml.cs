@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GTBench
 {
@@ -23,6 +24,61 @@ namespace GTBench
         public MainWindow()
         {
             InitializeComponent();
+
+            Current = this;
+        }
+
+        public static MainWindow Current { get; private set; }
+
+        private bool _Busy;
+
+        public bool Busy
+        {
+            get => _Busy;
+            set
+            {
+                if (value != _Busy)
+                {
+                    Cursor = value ? Cursors.Wait : null;
+                    _Busy = value;
+                }
+            }
+        }
+
+        private readonly Dictionary<string, Page> Pages = new Dictionary<string, Page>
+        {
+            { "home", new HomePage() },
+            { "translate", new TranslatePage() },
+            { "glossary", new GlossaryPage() },
+            { "settings", new SettingsPage() },
+        };
+
+        public void NavigateTo(string page_name)
+        {
+            if (Pages.TryGetValue(page_name, out var page))
+            {
+                frame.Navigate(page);
+                Title = string.Format("{0} - GTBench", page.Title);
+            }
+            else
+            {
+                throw new ArgumentException($"unknown page name: {page_name}", nameof(page_name));
+            }
+        }
+
+        private void Frame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+        }
+
+        private void menuItem_Selected(object sender, RoutedEventArgs e)
+        {
+            menu.IsOpen = false;
+            NavigateTo((sender as FrameworkElement)?.Name);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

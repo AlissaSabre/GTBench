@@ -1,0 +1,45 @@
+﻿<Page x:Class="GTBench.TranslatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GTBench"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Translate" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="100"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300" MinWidth="220"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16">Translate texts</TextBlock>
+        <GridSplitter Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Stretch"/>
+        <GridSplitter Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Height="5"/>
+        <TextBox x:Name="sourceText" Grid.Row="1" TextWrapping="Wrap">Type source text here.</TextBox>
+        <TextBox x:Name="targetText" Grid.Row="3" TextWrapping="Wrap" IsReadOnly="True"/>
+        <Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="1">
+            <Grid Margin="0,1,0,-1">
+                <Button Content="Translate!" Margin="10,10,10,0" Padding="6,6,6,6" VerticalAlignment="Top" FontSize="16" IsDefault="True" Click="translateButton_Click"/>
+                <Label Content="Mime Type" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding MimeType, Converter={x:Static local:StringTrimConverter.Instance}}"  Height="23" Margin="128,78,10,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
+                <Label Content="Source Language" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.143,0.18"/>
+                <TextBox Text="{Binding SourceLanguage, Converter={x:Static local:StringTrimConverter.Instance}}" Height="23" Margin="128,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80"/>
+                <Label Content="Target Language" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding TargetLanguage, Converter={x:Static local:StringTrimConverter.Instance}}" Height="23" Margin="128,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80"/>
+                <Label Content="Glossary ID" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding GlossaryID, Converter={x:Static local:StringTrimConverter.Instance}}" Height="23" Margin="128,193,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <CheckBox Content="Glossary ignores case" HorizontalAlignment="Left" Margin="128,221,0,0" VerticalAlignment="Top"/>
+                <Label Content="Model ID" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding ModelID, Converter={x:Static local:StringTrimConverter.Instance}}" Height="23" Margin="128,261,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
