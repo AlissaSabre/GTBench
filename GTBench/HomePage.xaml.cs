@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using Google.Api.Gax.ResourceNames;
 using Google.Cloud.Translate.V3;
 
+using static GTBench.Helpers;
+
 namespace GTBench
 {
     /// <summary>
@@ -28,8 +30,6 @@ namespace GTBench
             InitializeComponent();
         }
 
-        private TranslationServiceClient Client;
-
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow.Current.Busy = true;
@@ -39,16 +39,17 @@ namespace GTBench
             try
             {
                 var s = Properties.Settings.Default;
-                Client = string.IsNullOrWhiteSpace(s.CredentialsPath)
-                    ? await TranslationServiceClient.CreateAsync()
-                    : await new TranslationServiceClientBuilder { CredentialsPath = s.CredentialsPath }.BuildAsync();
+                var client = await GetTranslationServiceClientAsync();
+
                 var request = new GetSupportedLanguagesRequest
                 {
                     ParentAsLocationName = new LocationName(s.ProjectID, s.LocationID),
                     DisplayLanguageCode = "en",
                 };
                 if (!string.IsNullOrWhiteSpace(s.ModelID)) request.Model = $"projects/{s.ProjectID}/locations/{s.LocationID}/models/{s.ModelID}";
-                var response = await Client.GetSupportedLanguagesAsync(request);
+
+                var response = await client.GetSupportedLanguagesAsync(request);
+
                 var sb = new StringBuilder();
                 sb.AppendLine("Google Cloud Translation Service is working.");
                 sb.AppendLine();
@@ -61,6 +62,7 @@ namespace GTBench
             catch (Exception exception)
             {
                 warning.Visibility = Visibility.Visible;
+                // Let the warning panel show its contents.
                 await Task.Yield();
                 new ExceptionDialog { Exception = exception }.ShowDialog();
             }
@@ -75,7 +77,6 @@ namespace GTBench
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            Client = null;
         }
     }
 }

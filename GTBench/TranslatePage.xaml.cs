@@ -15,8 +15,11 @@ using System.Windows.Shapes;
 using Google.Api.Gax.ResourceNames;
 using Google.Cloud.Translate.V3;
 
+
 namespace GTBench
 {
+    using static Helpers;
+
     /// <summary>
     /// Interaction logic for TranslatePage.xaml
     /// </summary>
@@ -26,8 +29,6 @@ namespace GTBench
         {
             InitializeComponent();
         }
-
-        private TranslationServiceClient Client;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -46,19 +47,14 @@ namespace GTBench
 
             try
             {
-                if (Client == null)
-                {
-                    Client = string.IsNullOrWhiteSpace(s.CredentialsPath)
-                        ? await TranslationServiceClient.CreateAsync()
-                        : await new TranslationServiceClientBuilder { CredentialsPath = s.CredentialsPath }.BuildAsync();
-                }
                 var request = new TranslateTextRequest
                 {
                     Contents = { sourceText.Text },
                     TargetLanguageCode = s.TargetLanguage,
                     ParentAsLocationName = new LocationName(s.ProjectID, s.LocationID),
                 };
-                var response = await Client.TranslateTextAsync(request);
+                var client = await GetTranslationServiceClientAsync();
+                var response = await client.TranslateTextAsync(request);
                 targetText.Text = response.Translations[0].TranslatedText;
             }
             catch (Exception exception)

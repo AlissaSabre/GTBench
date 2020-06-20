@@ -40,6 +40,7 @@ namespace GTBench
                 if (value != _Busy)
                 {
                     Cursor = value ? Cursors.Wait : null;
+                    busyPanel.Visibility = value ? Visibility.Visible : Visibility.Collapsed;
                     _Busy = value;
                 }
             }
