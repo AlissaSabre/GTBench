@@ -36,9 +36,18 @@ namespace GTBench
             status.Text = string.Empty;
             warning.Visibility = Visibility.Collapsed;
 
+            var settings = Properties.Settings.Default;
+            var sb = new StringBuilder();
+
             try
             {
-                var s = Properties.Settings.Default;
+                sb.AppendLine();
+                sb.AppendLine($"Project: {settings.ProjectID}");
+                sb.AppendLine($"Location: {settings.LocationID}");
+                sb.AppendLine($"Model: {settings.ModelID}");
+                sb.AppendLine($"Glossary: {settings.GlossaryID}");
+                status.Text = sb.ToString();
+
                 var client = await GetTranslationServiceClientAsync();
 
                 var request = new GetSupportedLanguagesRequest
@@ -50,7 +59,6 @@ namespace GTBench
 
                 var response = await client.GetSupportedLanguagesAsync(request);
 
-                var sb = new StringBuilder();
                 sb.AppendLine();
                 sb.AppendLine("Google Cloud Translation Service is working.");
                 sb.AppendLine();

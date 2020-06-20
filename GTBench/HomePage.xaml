@@ -10,7 +10,7 @@
 
     <Grid>
         <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud Translation (Advanced)</TextBlock>
-        <TextBlock x:Name="status" Margin="10,40,10,10" TextWrapping="Wrap"/>
+        <TextBox x:Name="status" Margin="0,34,0,0" Padding="10,6,10,10" TextWrapping="Wrap" IsReadOnly="true" VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" SelectionBrush="{x:Null}"/>
         <TextBlock x:Name="warning" Margin="10,40,10,10" TextWrapping="Wrap">
             Access to Google Cloud Translation Service failed.
             Please check your Internet connection and review your access <Hyperlink Click="configuration_Click">configuration</Hyperlink>.
