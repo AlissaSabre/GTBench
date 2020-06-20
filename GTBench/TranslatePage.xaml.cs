@@ -56,7 +56,9 @@ namespace GTBench
                 };
                 request.Labels.AddLabels();
                 var response = await client.TranslateTextAsync(request);
-                targetText.Text = response.Translations[0].TranslatedText;
+                targetText.Text = request.GlossaryConfig == null
+                    ? response.Translations[0].TranslatedText
+                    : response.GlossaryTranslations[0].TranslatedText;
             }
             catch (Exception exception)
             {
