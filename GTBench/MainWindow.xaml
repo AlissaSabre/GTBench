@@ -10,10 +10,24 @@
         mc:Ignorable="d"
         Title="GTBench" 
         Height="450" Width="800" Closing="Window_Closing">
+    <Window.Resources>
+        <Storyboard x:Key="fadeBusyPanelIn">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="busyPanel" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="busyPanelCover" Storyboard.TargetProperty="Opacity" Duration="00:00:00.3" To="0.5"/>
+        </Storyboard>
+        <Storyboard x:Key="fadeBusyPanelOut">
+            <DoubleAnimation Storyboard.TargetName="busyPanelCover" Storyboard.TargetProperty="Opacity" Duration="00:00:00.2" To="0.0"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="busyPanel" Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
     <Grid>
         <Frame x:Name="frame" Margin="50,0,0,0" NavigationUIVisibility="Hidden"/>
-        <Grid x:Name="busyPanel" Margin="50,0,0,0">
-            <Canvas Background="Black" Opacity="0.5" />
+        <Grid Name="busyPanel" Margin="50,0,0,0">
+            <Canvas Name="busyPanelCover" Background="Black" Opacity="0.5" />
             <mah:ProgressRing Foreground="White"/>
         </Grid>
         <hm:HamburgerMenu x:Name="menu" MenuIconColor="White" SelectionIndicatorColor="LightGray" MenuItemForeground="White" Background="SlateGray" HorizontalAlignment="Left">
