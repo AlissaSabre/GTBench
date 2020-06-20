@@ -11,15 +11,15 @@
     <Grid>
         <TextBlock Margin="0,0,0,0" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud Platform configuration</TextBlock>
         <Label Content="Location ID" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding LocationID, Converter={x:Static local:StringTrimConverter.Instance}}" HorizontalAlignment="Left" Height="23" Margin="161,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding LocationID, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="161,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" VerticalContentAlignment="Center"/>
         <Label Content="Project ID or Number" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding ProjectID, Converter={x:Static local:StringTrimConverter.Instance}}" HorizontalAlignment="Left" Height="23" Margin="161,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding ProjectID, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="161,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" VerticalContentAlignment="Center"/>
         <Label Content="Credentials File Path" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding CredentialsPath, Converter={x:Static local:StringTrimConverter.Instance}}" Height="23" Margin="161,112,10,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding CredentialsPath, Converter={local:StringTrimConverter}}" Height="23" Margin="161,112,10,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding LabelKey, Converter={x:Static local:StringTrimConverter.Instance}}" HorizontalAlignment="Left" Height="23" Margin="161,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding LabelKey, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="161,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
         <Label Content="=" HorizontalAlignment="Left" Margin="286,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.229,0.448"/>
-        <TextBox Text="{Binding LabelValue, Converter={x:Static local:StringTrimConverter.Instance}}" HorizontalAlignment="Left" Height="23" Margin="309,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding LabelValue, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="309,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Page>

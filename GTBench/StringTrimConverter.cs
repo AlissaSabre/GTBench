@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace GTBench
 {
     [ValueConversion(typeof(string), typeof(string))]
-    public class StringTrimConverter : IValueConverter
+    public class StringTrimConverter : MarkupExtension, IValueConverter
     {
         public static readonly StringTrimConverter Instance = new StringTrimConverter();
 
@@ -21,6 +22,11 @@ namespace GTBench
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return value?.ToString().Trim();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return Instance;
         }
     }
 }
