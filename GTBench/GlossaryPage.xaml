@@ -8,5 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Glossary" Loaded="Page_Loaded">
 
-    <Grid/>
+    <Grid>
+        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Glossaries management</TextBlock>
+        <Label Content="Glossary data URI" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="dataUri" HorizontalAlignment="Left" Height="23" Margin="161,42,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="300"/>
+        <Label Content="Source Language" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding SourceLanguage}" HorizontalAlignment="Left" Height="23" Margin="161,73,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Target Language" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding TargetLanguage}" HorizontalAlignment="Left" Height="23" Margin="161,104,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Glossary ID" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding GlossaryID}" HorizontalAlignment="Left" Height="23" Margin="161,135,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="160"/>
+        <Button x:Name="createButton" Content="Create!" HorizontalAlignment="Left" Margin="386,368,0,0" VerticalAlignment="Top" Width="75" Click="CreateButton_Click"/>
+        <TextBox x:Name="creationStatus" HorizontalAlignment="Left" Height="147" Margin="10,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="368"/>
+    </Grid>
 </Page>

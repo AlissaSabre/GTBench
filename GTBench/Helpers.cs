@@ -42,7 +42,7 @@ namespace GTBench
             if (string.IsNullOrWhiteSpace(settings.GlossaryID)) return null;
             return new TranslateTextGlossaryConfig
             {
-                Glossary = "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/glossaries/" + settings.GlossaryID,
+                Glossary = GetGlossaryName(),
                 IgnoreCase = settings.GlossaryIgnoresCase,
             };
         }
@@ -68,6 +68,13 @@ namespace GTBench
             return (string.IsNullOrWhiteSpace(settings.ModelID))
                 ? string.Empty
                 : "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/models/" + settings.ModelID;
+        }
+
+        public static string GetGlossaryName()
+        {
+            var settings = Properties.Settings.Default;
+            if (string.IsNullOrWhiteSpace(settings.GlossaryID)) return string.Empty;
+            return "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/glossaries/" + settings.GlossaryID;
         }
     }
 }
