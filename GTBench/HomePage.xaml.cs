@@ -43,14 +43,15 @@ namespace GTBench
 
                 var request = new GetSupportedLanguagesRequest
                 {
-                    ParentAsLocationName = new LocationName(s.ProjectID, s.LocationID),
                     DisplayLanguageCode = "en",
+                    Model = GetModelName(),
+                    ParentAsLocationName = GetLocationName(),
                 };
-                if (!string.IsNullOrWhiteSpace(s.ModelID)) request.Model = $"projects/{s.ProjectID}/locations/{s.LocationID}/models/{s.ModelID}";
 
                 var response = await client.GetSupportedLanguagesAsync(request);
 
                 var sb = new StringBuilder();
+                sb.AppendLine();
                 sb.AppendLine("Google Cloud Translation Service is working.");
                 sb.AppendLine();
                 sb.Append("Supported source languages: ");

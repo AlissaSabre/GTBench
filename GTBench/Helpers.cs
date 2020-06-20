@@ -34,5 +34,19 @@ namespace GTBench
             }
             return tuple.Client;
         }
+
+        public static LocationName GetLocationName()
+        {
+            var settings = Properties.Settings.Default;
+            return new LocationName(settings.ProjectID, settings.LocationID);
+        }
+
+        public static string GetModelName()
+        {
+            var settings = Properties.Settings.Default;
+            return (string.IsNullOrWhiteSpace(settings.ModelID))
+                ? string.Empty
+                : "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/models/" + settings.ModelID;
+        }
     }
 }

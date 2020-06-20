@@ -37,7 +37,7 @@ namespace GTBench
 
         private async void translateButton_Click(object sender, RoutedEventArgs e)
         {
-            var s = Properties.Settings.Default;
+            var settings = Properties.Settings.Default;
             MainWindow.Current.Busy = true;
             targetText.Text = string.Empty;
 
@@ -46,8 +46,8 @@ namespace GTBench
                 var request = new TranslateTextRequest
                 {
                     Contents = { sourceText.Text },
-                    TargetLanguageCode = s.TargetLanguage,
-                    ParentAsLocationName = new LocationName(s.ProjectID, s.LocationID),
+                    TargetLanguageCode = settings.TargetLanguage,
+                    ParentAsLocationName = GetLocationName(),
                 };
 
                 var client = await GetTranslationServiceClientAsync();
