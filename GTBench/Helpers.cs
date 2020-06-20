@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Google.Api.Gax.ResourceNames;
 using Google.Cloud.Translate.V3;
+using Google.Protobuf.Collections;
 
 namespace GTBench
 {
@@ -33,6 +34,26 @@ namespace GTBench
                 TranslationServiceClientCache.SetTarget(tuple);
             }
             return tuple.Client;
+        }
+
+        public static TranslateTextGlossaryConfig GetGlossaryConfig()
+        {
+            var settings = Properties.Settings.Default;
+            if (string.IsNullOrWhiteSpace(settings.GlossaryID)) return null;
+            return new TranslateTextGlossaryConfig
+            {
+                Glossary = "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/glossaries/" + settings.GlossaryID,
+                IgnoreCase = settings.GlossaryIgnoresCase,
+            };
+        }
+
+        public static void AddLabels(this MapField<string, string> map)
+        {
+            var settings = Properties.Settings.Default;
+            if (!string.IsNullOrWhiteSpace(settings.LabelKey))
+            {
+                map.Add(settings.LabelKey, settings.LabelValue);
+            }
         }
 
         public static LocationName GetLocationName()

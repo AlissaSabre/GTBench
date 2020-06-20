@@ -43,14 +43,18 @@ namespace GTBench
 
             try
             {
+                var client = await GetTranslationServiceClientAsync();
                 var request = new TranslateTextRequest
                 {
                     Contents = { sourceText.Text },
-                    TargetLanguageCode = settings.TargetLanguage,
+                    GlossaryConfig = GetGlossaryConfig(),
+                    MimeType = settings.MimeType,
+                    Model = GetModelName(),
                     ParentAsLocationName = GetLocationName(),
+                    SourceLanguageCode = settings.SourceLanguage,
+                    TargetLanguageCode = settings.TargetLanguage,
                 };
-
-                var client = await GetTranslationServiceClientAsync();
+                request.Labels.AddLabels();
                 var response = await client.TranslateTextAsync(request);
                 targetText.Text = response.Translations[0].TranslatedText;
             }
