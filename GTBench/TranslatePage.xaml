@@ -37,7 +37,7 @@
                 <TextBox Text="{Binding TargetLanguage, Converter={local:StringTrimConverter}}" Height="23" Margin="128,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80"/>
                 <Label Content="Glossary ID" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding GlossaryID, Converter={local:StringTrimConverter}}" Height="23" Margin="128,193,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <CheckBox Content="Glossary ignores case" HorizontalAlignment="Left" Margin="128,221,0,0" VerticalAlignment="Top"/>
+                <CheckBox IsChecked="{Binding GlossaryIgnoresCase}" Content="Glossary ignores case" HorizontalAlignment="Left" Margin="128,221,0,0" VerticalAlignment="Top"/>
                 <Label Content="Model ID" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding ModelID, Converter={local:StringTrimConverter}}" Height="23" Margin="128,261,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
             </Grid>
