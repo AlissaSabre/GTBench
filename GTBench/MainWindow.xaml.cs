@@ -67,10 +67,6 @@ namespace GTBench
             }
         }
 
-        private void Frame_Navigating(object sender, NavigatingCancelEventArgs e)
-        {
-        }
-
         private void menuItem_Selected(object sender, RoutedEventArgs e)
         {
             menu.IsOpen = false;
