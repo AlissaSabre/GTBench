@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GTBench"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Home" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+      Title="Home" Loaded="Page_Loaded">
 
     <Grid>
         <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud Translation (Advanced)</TextBlock>

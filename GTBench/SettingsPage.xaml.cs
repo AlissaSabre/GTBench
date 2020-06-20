@@ -29,9 +29,5 @@ namespace GTBench
         {
             DataContext = Properties.Settings.Default;
         }
-
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

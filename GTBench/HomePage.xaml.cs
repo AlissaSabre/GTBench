@@ -74,9 +74,5 @@ namespace GTBench
         {
            MainWindow.Current.NavigateTo("settings");
         }
-
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

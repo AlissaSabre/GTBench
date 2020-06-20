@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GTBench"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Settings" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+      Title="Settings" Loaded="Page_Loaded">
 
     <Grid>
         <TextBlock Margin="0,0,0,0" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud Platform configuration</TextBlock>
