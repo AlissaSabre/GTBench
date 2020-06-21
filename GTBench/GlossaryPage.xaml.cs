@@ -13,29 +13,55 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Grpc.Core.Utils;
+using Google.Api.Gax;
 
 namespace GTBench
 {
+    using System.Collections.ObjectModel;
+    using System.Windows.Media.Animation;
     using static GTBench.Helpers;
 
     /// <summary>
     /// Interaction logic for GlossaryPage.xaml
     /// </summary>
-    public partial class GlossaryPage : Page
+    public partial class GlossaryPage : Page, ISlidePageController
     {
         public GlossaryPage()
         {
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private ObservableCollection<GlossaryInfo> Glossaries;
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = Properties.Settings.Default;
+            glossaries.ItemsSource = Glossaries = new ObservableCollection<GlossaryInfo>();
+            MainWindow.Current.Busy = true;
+            try
+            {
+                var client = await GetTranslationServiceClientAsync();
+                var response = client.ListGlossariesAsync(GetLocationName());
+                await response.ForEachAsync(glossary =>
+                {
+                    Glossaries.Add(new GlossaryInfo(glossary));
+                });
+            }
+            catch (Exception exception)
+            {
+                new ExceptionDialog { Exception = exception }.ShowDialog();
+            }
+            MainWindow.Current.Busy = false;
         }
 
         private async void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             var settings = Properties.Settings.Default;
+            var create_page = new GlossaryCreateSlidePage { Controller = this, DataContext = DataContext };
+            var ok = await create_page.ShowDialogAsync();
+            if (!ok) return;
+
             MainWindow.Current.Busy = true;
             var sb = new StringBuilder();
             try
@@ -45,7 +71,7 @@ namespace GTBench
                 {
                     InputConfig = new GlossaryInputConfig
                     {
-                        GcsSource = new GcsSource { InputUri = dataUri.Text.Trim() },
+                        GcsSource = new GcsSource { InputUri = create_page.InputUri },
                     },
                     LanguagePair = new Glossary.Types.LanguageCodePair
                     {
@@ -93,5 +119,29 @@ namespace GTBench
             }
             MainWindow.Current.Busy = false;
         }
+
+        #region ISlidePageController implementation
+
+        private SlidePage SlidePage;
+
+        void ISlidePageController.Show(SlidePage slide_page)
+        {
+            SlidePage = slide_page;
+            slidePageFrame.Navigate(slide_page);
+            (slidePageFrame.FindResource("slideIn") as Storyboard).Begin();
+        }
+
+        void ISlidePageController.Close(SlidePage slide_page)
+        {
+            (slidePageFrame.FindResource("slideOut") as Storyboard).Begin();
+            SlidePage = null;
+        }
+
+        private void SlidePageShield_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SlidePage?.Close(false);
+        }
+
+        #endregion
     }
 }

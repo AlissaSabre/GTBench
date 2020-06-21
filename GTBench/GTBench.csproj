@@ -55,18 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AsyncEnumerable.cs" />
+    <Compile Include="GlossaryCreateSlidePage.xaml.cs">
+      <DependentUpon>GlossaryCreateSlidePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExceptionDialog.cs" />
     <Compile Include="GlossaryPage.xaml.cs">
       <DependentUpon>GlossaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers.cs" />
+    <Compile Include="GlossaryInfo.cs" />
+    <Compile Include="ISlidePageController.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SlidePage.cs" />
     <Compile Include="StringTrimConverter.cs" />
     <Compile Include="TranslatePage.xaml.cs">
       <DependentUpon>TranslatePage.xaml</DependentUpon>
     </Compile>
+    <Page Include="GlossaryCreateSlidePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GlossaryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

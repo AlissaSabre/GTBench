@@ -9,16 +9,59 @@
       Title="Glossary" Loaded="Page_Loaded">
 
     <Grid>
-        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Glossaries management</TextBlock>
-        <Label Content="Glossary data URI" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="dataUri" HorizontalAlignment="Left" Height="23" Margin="161,42,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="300"/>
-        <Label Content="Source Language" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding SourceLanguage}" HorizontalAlignment="Left" Height="23" Margin="161,73,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="80"/>
-        <Label Content="Target Language" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding TargetLanguage}" HorizontalAlignment="Left" Height="23" Margin="161,104,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="80"/>
-        <Label Content="Glossary ID" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding GlossaryID}" HorizontalAlignment="Left" Height="23" Margin="161,135,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="160"/>
-        <Button x:Name="createButton" Content="Create!" HorizontalAlignment="Left" Margin="386,368,0,0" VerticalAlignment="Top" Width="75" Click="CreateButton_Click"/>
-        <TextBox x:Name="creationStatus" HorizontalAlignment="Left" Height="147" Margin="10,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="368"/>
+        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top" Text="Glossary Resource management"/>
+        <DataGrid x:Name="glossaries" Margin="0,220,0,0" AutoGenerateColumns="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" BorderThickness="0,3,0,0" BorderBrush="SlateGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Glossary Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Source" Binding="{Binding SourceLanguage}"/>
+                <DataGridTextColumn Header="Target" Binding="{Binding TargetLanguage}"/>
+                <DataGridTextColumn Header="Entries" Binding="{Binding Entries}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Input file URI" Width="*" Binding="{Binding InputUri}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="creationStatus" HorizontalAlignment="Left" Height="177" Margin="10,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="399"/>
+        <Button HorizontalAlignment="Right" Margin="0,1,45,0" VerticalAlignment="Top" Width="31" Height="31" Style="{DynamicResource MahApps.Styles.Button.Circle}" Click="CreateButton_Click">
+            <TextBlock Text="+" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="31" Padding="0,0,0,6"/>
+        </Button>
+        <Button HorizontalAlignment="Right" Margin="0,1,5,0" VerticalAlignment="Top" Width="32" Height="31" Style="{DynamicResource MahApps.Styles.Button.Circle}">
+            <TextBlock Text="-" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Padding="0,0,0,7"/>
+        </Button>
+
+        <Canvas x:Name="slidePageShield" Background="Black" Visibility="Collapsed" MouseDown="SlidePageShield_MouseDown" />
+        <Frame x:Name="slidePageFrame" Visibility="Collapsed" Background="Transparent" BorderBrush="Gray" Margin="0,20,0,0" Width="450" HorizontalAlignment="Right" NavigationUIVisibility="Hidden">
+            <Frame.Resources>
+                <Storyboard x:Key="slideIn">
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="slidePageFrame" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="00:00:00.0" Value="{x:Static Visibility.Visible}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="slidePageFrame" Storyboard.TargetProperty="Margin">
+                        <SplineThicknessKeyFrame KeyTime="00:00:00.0" Value="0,20,-450,0"/>
+                        <SplineThicknessKeyFrame KeyTime="00:00:01.0" Value="0,20,0,0" KeySpline="0.0,0.0 0.0,1.0"/>
+                    </ThicknessAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="slidePageShield" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="00:00:00.0" Value="{x:Static Visibility.Visible}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <DoubleAnimation Storyboard.TargetName="slidePageShield" Storyboard.TargetProperty="Opacity" Duration="00:00:00.2" From="0" To="0.5"/>
+                </Storyboard>
+                <Storyboard x:Key="slideOut">
+                    <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="slidePageFrame" Storyboard.TargetProperty="Margin">
+                        <SplineThicknessKeyFrame KeyTime="00:00:00.0" Value="0,20,0,0"/>
+                        <SplineThicknessKeyFrame KeyTime="00:00:00.5" Value="0,20,-450,0" KeySpline="0.5,0.0 1.0,0.5"/>
+                    </ThicknessAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="slidePageFrame" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="00:00:00.5" Value="{x:Static Visibility.Collapsed}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="slidePageShield" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="00:00:00.5" Value="{x:Static Visibility.Collapsed}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="slidePageShield" Storyboard.TargetProperty="Opacity">
+                        <LinearDoubleKeyFrame KeyTime="00:00:00.3" Value="0.5"/>
+                        <LinearDoubleKeyFrame KeyTime="00:00:00.5" Value="0.0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </Frame.Resources>
+        </Frame>
     </Grid>
 </Page>

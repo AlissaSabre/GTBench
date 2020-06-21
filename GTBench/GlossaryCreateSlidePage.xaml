@@ -1,0 +1,26 @@
+﻿<local:SlidePage x:Class="GTBench.GlossaryCreateSlidePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GTBench"
+      mc:Ignorable="d" 
+      d:DesignHeight="417" d:DesignWidth="450"
+      Title="GlossaryCreateSlidePage" Background="White">
+
+    <Grid>
+        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Creating <Run FontStyle="Italic">unidirectional</Run> glossary resource</TextBlock>
+
+        <Label Content="Glossary ID" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding GlossaryID}" HorizontalAlignment="Left" Height="23" Margin="130,38,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="160"/>
+        <Label Content="Input file URI" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="inputUri" Text="gs://" Height="23" Margin="130,69,10,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
+        <Label Content="Source Language" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding SourceLanguage}" HorizontalAlignment="Left" Height="23" Margin="130,100,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="80"/>
+        <Label Content="Target Language" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding TargetLanguage}" HorizontalAlignment="Left" Height="23" Margin="130,131,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="80"/>
+        <Button Content="OK" Margin="0,0,115,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Click="ok_Click"/>
+        <Button Content="Cancel" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Click="cancel_Click"/>
+
+    </Grid>
+</local:SlidePage>
