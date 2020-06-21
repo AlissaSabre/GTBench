@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GTBench"
-      xmlns:svg="clr-namespace:SharpVectors.Converters;assembly=SharpVectors.Converters.Wpf"
+      xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Translate" Loaded="Page_Loaded">
@@ -28,7 +29,7 @@
         <TextBox x:Name="targetText" Grid.Row="3" TextWrapping="Wrap" IsReadOnly="True"/>
         <Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" BorderBrush="LightGray" BorderThickness="1">
             <Grid Margin="0,1,0,-1">
-                <Button Content="Translate!" Margin="10,10,10,0" Padding="6,6,6,6" VerticalAlignment="Top" FontSize="24" IsDefault="True" Click="translateButton_Click"/>
+                <Button Content="Translate" Margin="10,10,10,0" Padding="6,6,6,6" VerticalAlignment="Top" FontSize="20" IsDefault="True" Click="translateButton_Click"/>
                 <Label Content="Mime Type" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding MimeType, Converter={local:StringTrimConverter}}"  Height="23" Margin="128,78,10,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
                 <Label Content="Source Language" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.143,0.18"/>
