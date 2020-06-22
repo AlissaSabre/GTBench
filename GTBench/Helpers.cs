@@ -70,11 +70,30 @@ namespace GTBench
                 : "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/models/" + settings.ModelID;
         }
 
-        public static string GetGlossaryName()
+        /// <summary>
+        /// Gets the cloud resource name for a glossary.
+        /// </summary>
+        /// <param name="glossary_id">Identifier of the glossary, an empty string, or null.  The default is null.</param>
+        /// <returns>Cloud resource name.</returns>
+        /// <remarks>
+        /// <para>
+        /// If <paramref name="glossary_id"/> is a non-null empty string (<see cref="string.Empty"/>),
+        /// this method returns an empty string, that <i>usually</i> means "no glossary"
+        /// in Google Cloud Translation (Advanced) APIs.
+        /// If <paramref name="glossary_id"/> is null, this method uses the glossary ID
+        /// taken from <see cref="Properties.Settings.Default"/>.
+        /// </para>
+        /// <para>
+        /// Glossary name includes project ID and location ID.
+        /// They are taken from  <see cref="Properties.Settings.Default"/>.
+        /// </para>
+        /// </remarks>
+        public static string GetGlossaryName(string glossary_id = null)
         {
             var settings = Properties.Settings.Default;
-            if (string.IsNullOrWhiteSpace(settings.GlossaryID)) return string.Empty;
-            return "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/glossaries/" + settings.GlossaryID;
+            var id = glossary_id ?? settings.GlossaryID;
+            if (string.IsNullOrWhiteSpace(id)) return string.Empty;
+            return "projects/" + settings.ProjectID + "/locations/" + settings.LocationID + "/glossaries/" + id;
         }
     }
 }

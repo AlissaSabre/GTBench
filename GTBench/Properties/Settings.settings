@@ -35,5 +35,14 @@
     <Setting Name="TargetLanguage" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="RunningGlossaryOperations" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MinimumOperationPollInterval" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+    <Setting Name="MaximumOperationPollInterval" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:00:20</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
