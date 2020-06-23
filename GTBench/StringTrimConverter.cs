@@ -9,6 +9,7 @@ using System.Windows.Markup;
 
 namespace GTBench
 {
+    [MarkupExtensionReturnType(typeof(StringTrimConverter))]
     [ValueConversion(typeof(string), typeof(string))]
     public class StringTrimConverter : MarkupExtension, IValueConverter
     {
