@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,8 +45,6 @@ namespace GTBench
                 sb.AppendLine();
                 sb.AppendLine($"Project: {settings.ProjectID}");
                 sb.AppendLine($"Location: {settings.LocationID}");
-                sb.AppendLine($"Model: {settings.ModelID}");
-                sb.AppendLine($"Glossary: {settings.GlossaryID}");
                 status.Text = sb.ToString();
 
                 var client = await GetTranslationServiceClientAsync();
@@ -61,11 +60,6 @@ namespace GTBench
 
                 sb.AppendLine();
                 sb.AppendLine("Google Cloud Translation Service is working.");
-                sb.AppendLine();
-                sb.Append("Supported source languages: ");
-                sb.AppendLine(string.Join(", ", response.Languages
-                    .Where(lang => lang.SupportSource)
-                    .Select(lang => $"{lang.LanguageCode} ({lang.DisplayName})")));
                 status.Text = sb.ToString();
             }
             catch (Exception exception)
@@ -81,7 +75,13 @@ namespace GTBench
 
         private void configuration_Click(object sender, RoutedEventArgs e)
         {
-           MainWindow.Current.NavigateTo("settings");
+            MainWindow.Current.NavigateTo("settings");
+        }
+
+        private void WebUrl_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start((sender as Hyperlink)?.Tag as string);
+            e.Handled = true;
         }
     }
 }

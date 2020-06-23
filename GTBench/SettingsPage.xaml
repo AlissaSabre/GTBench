@@ -9,7 +9,7 @@
       Title="Settings" Loaded="Page_Loaded">
 
     <Grid>
-        <TextBlock Margin="0,0,0,0" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud Platform configuration</TextBlock>
+        <TextBlock Margin="0,0,0,0" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud settings</TextBlock>
         <Label Content="Location ID" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding LocationID, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="161,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" VerticalContentAlignment="Center"/>
         <Label Content="Project ID or Number" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
@@ -20,6 +20,5 @@
         <TextBox Text="{Binding LabelKey, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="161,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
         <Label Content="=" HorizontalAlignment="Left" Margin="286,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.229,0.448"/>
         <TextBox Text="{Binding LabelValue, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="309,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-
     </Grid>
 </Page>

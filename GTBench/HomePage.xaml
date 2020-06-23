@@ -9,11 +9,16 @@
       Title="Home" Loaded="Page_Loaded">
 
     <Grid>
-        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Google Cloud Translation (Advanced)</TextBlock>
-        <TextBox x:Name="status" Margin="0,34,0,0" Padding="10,6,10,10" TextWrapping="Wrap" IsReadOnly="true" VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" SelectionBrush="{x:Null}"/>
-        <TextBlock x:Name="warning" Margin="10,40,10,10" TextWrapping="Wrap">
-            Access to Google Cloud Translation Service failed.
-            Please check your Internet connection and review your access <Hyperlink Click="configuration_Click">configuration</Hyperlink>.
+        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Cloud Translation (Advanced) API</TextBlock>
+        <TextBox x:Name="status" Margin="0,34,0,0" Padding="10,6,10,10" TextWrapping="Wrap" IsReadOnly="true" VerticalScrollBarVisibility="Auto" BorderThickness="0"/>
+        <TextBlock x:Name="warning" Margin="0,34,0,0" Padding="10,6,10,10" TextWrapping="Wrap">
+            Access to Google Translate service via Cloud Translation (Advanced) API failed.
+            Please check your Internet connection and review the <Hyperlink Click="configuration_Click">settings</Hyperlink> of this app.
+        </TextBlock>
+        <TextBlock VerticalAlignment="Bottom" Margin="0,0,0,0" Padding="10,10,10,10" TextWrapping="Wrap" Background="White">
+            Google Translate is used to power translation within this tool through Cloud Translation (Advanced) API.
+            You can learn more on Cloud Translation on <Hyperlink Click="WebUrl_Click" Tag="https://cloud.google.com/translate">https://cloud.google.com/translate</Hyperlink>.
+            THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
         </TextBlock>
     </Grid>
 </Page>
