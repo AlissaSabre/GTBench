@@ -75,6 +75,14 @@ namespace GTBench
 
             if (completed)
             {
+                // One or more long-running operations has been completed.
+                // Remove any faint info perhaps from the completed deletion.
+                for (int p = List.Count - 1; p >= 0; --p)
+                {
+                    if (List[p].Status == GlossaryStatus.Faint) List.RemoveAt(p);
+                }
+
+                // Anyway persists the remaining long-running operations.
                 PersistRunningOperations();
             }
 
