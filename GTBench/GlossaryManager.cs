@@ -86,6 +86,7 @@ namespace GTBench
                 PersistRunningOperations();
             }
 
+            // Update the timer
             if (List.All(i => (i.Status & GlossaryStatus.RunningFlag) == 0))
             {
                 // No more long-running operations.  Stop polling.
@@ -104,7 +105,7 @@ namespace GTBench
                 var seconds = Timer.Interval.TotalSeconds;
                 seconds *= 1.5;
                 seconds = Math.Max(seconds, Settings.MinimumOperationPollInterval.TotalSeconds);
-                seconds = Math.Max(seconds, Settings.MaximumOperationPollInterval.TotalSeconds);
+                seconds = Math.Min(seconds, Settings.MaximumOperationPollInterval.TotalSeconds);
                 Timer.Interval = TimeSpan.FromSeconds(seconds);
                 Timer.Start();
             }
