@@ -18,6 +18,8 @@ using Google.Cloud.Translate.V3;
 
 namespace GTBench
 {
+    using System.Globalization;
+    using System.Windows.Markup;
     using static Helpers;
 
     /// <summary>
@@ -66,6 +68,29 @@ namespace GTBench
             }
 
             MainWindow.Current.Busy = false;
+        }
+    }
+
+    [MarkupExtensionReturnType(typeof(HiddenIfNullOrWhite))]
+    [ValueConversion(typeof(string), typeof(Visibility))]
+    public class HiddenIfNullOrWhite : MarkupExtension, IValueConverter
+    {
+        public static readonly HiddenIfNullOrWhite Instance = new HiddenIfNullOrWhite();
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var text = value as string;
+            return string.IsNullOrWhiteSpace(text) ? Visibility.Hidden : Visibility.Visible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return Instance;
         }
     }
 }

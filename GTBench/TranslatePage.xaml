@@ -25,11 +25,12 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16">Translate texts</TextBlock>
         <GridSplitter Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Width="5" HorizontalAlignment="Stretch"/>
         <GridSplitter Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Height="5"/>
-        <TextBox x:Name="sourceText" Grid.Row="1" TextWrapping="Wrap">Enter source text here.</TextBox>
-        <TextBox x:Name="targetText" Grid.Row="3" TextWrapping="Wrap" IsReadOnly="True"/>
+        <TextBox x:Name="sourceText" Grid.Row="1" BorderThickness="0" TextWrapping="Wrap">Enter source text here.</TextBox>
+        <TextBox x:Name="targetText" Grid.Row="3" Margin="0,0,0,25" BorderThickness="0" TextWrapping="Wrap" IsReadOnly="True"/>
+        <Image x:Name="poweredby" Grid.Row="3" Source="Assets/color-regular@3x.png" Margin="0,0,2,0" HorizontalAlignment="Right" Height="20" VerticalAlignment="Bottom" Visibility="{Binding ElementName=targetText, Path=Text, Converter={local:HiddenIfNullOrWhite}}"/>
         <Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" BorderBrush="LightGray" BorderThickness="1">
             <Grid Margin="0,1,0,-1">
-                <Button Content="Translate" Margin="10,10,10,0" Padding="6,6,6,6" VerticalAlignment="Top" FontSize="20" IsDefault="True" Click="translateButton_Click"/>
+                <Button Content="Translate with Google" Margin="10,10,10,0" Padding="6,6,6,6" VerticalAlignment="Top" FontSize="20" IsDefault="True" Click="translateButton_Click"/>
                 <Label Content="Mime Type" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding MimeType, Converter={local:StringTrimConverter}}"  Height="23" Margin="128,78,10,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
                 <Label Content="Source Language" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.143,0.18"/>
