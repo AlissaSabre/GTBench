@@ -60,6 +60,9 @@
       <DependentUpon>GlossaryCreateSlidePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExceptionDialog.cs" />
+    <Compile Include="GlossaryDeleteSlidePage.xaml.cs">
+      <DependentUpon>GlossaryDeleteSlidePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlossaryInfo.cs" />
     <Compile Include="GlossaryInfoToStringConverter.cs" />
     <Compile Include="GlossaryManager.cs" />
@@ -78,6 +81,10 @@
       <DependentUpon>TranslatePage.xaml</DependentUpon>
     </Compile>
     <Page Include="GlossaryCreateSlidePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GlossaryDeleteSlidePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

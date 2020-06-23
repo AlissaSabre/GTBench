@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GTBench"
       mc:Ignorable="d" 
-      d:DesignHeight="417" d:DesignWidth="450"
+      d:DesignHeight="420" d:DesignWidth="450"
       Title="GlossaryCreateSlidePage" Background="White">
 
     <Grid>

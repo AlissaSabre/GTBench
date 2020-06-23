@@ -76,6 +76,27 @@ namespace GTBench
             }
         }
 
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var glossary_info = glossaries.SelectedItem as GlossaryInfo;
+            if (glossary_info == null) return;
+
+            var delete_page = new GlossaryDeleteSlidePage { Controller = this, DataContext = glossary_info };
+            if (await delete_page.ShowDialogAsync())
+            {
+                MainWindow.Current.Busy = true;
+                try
+                {
+                    await GlossaryManager.DeleteAsync(glossary_info.GlossaryID);
+                }
+                catch (Exception exception)
+                {
+                    new ExceptionDialog { Exception = exception }.ShowDialog();
+                }
+                MainWindow.Current.Busy = false;
+            }
+        }
+
         #region ISlidePageController implementation
 
         private SlidePage SlidePage;
