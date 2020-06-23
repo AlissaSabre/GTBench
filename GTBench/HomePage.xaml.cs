@@ -59,7 +59,7 @@ namespace GTBench
                 var response = await client.GetSupportedLanguagesAsync(request);
 
                 sb.AppendLine();
-                sb.AppendLine("Google Cloud Translation Service is working.");
+                sb.AppendLine("Google Translate service via Cloud Translation (Advanced) API is working.");
                 status.Text = sb.ToString();
             }
             catch (Exception exception)
