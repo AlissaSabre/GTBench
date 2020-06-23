@@ -9,6 +9,8 @@
       Title="Glossary" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
     <Grid>
+        <Label Content="{Binding ElementName=glossaries, Path=SelectedItem.GlossaryID, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox Text="{Binding ElementName=glossaries, Path=SelectedItem, Mode=OneWay, Converter={local:GlossaryInfoToStringConverter}}" Height="137" Margin="10,69,10,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" BorderThickness="0"/>
         <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top" Text="Glossary Resource management"/>
         <DataGrid x:Name="glossaries" Margin="0,220,0,0" AutoGenerateColumns="False" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" BorderThickness="0,3,0,0" BorderBrush="SlateGray">
             <DataGrid.Columns>
@@ -21,7 +23,6 @@
                 <DataGridTextColumn Header="Input file URI" Width="*" Binding="{Binding InputUri}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="creationStatus" HorizontalAlignment="Left" Height="177" Margin="10,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="399"/>
         <Button HorizontalAlignment="Right" Margin="0,1,45,0" VerticalAlignment="Top" Width="31" Height="31" Style="{DynamicResource MahApps.Styles.Button.Circle}" Click="CreateButton_Click">
             <TextBlock Text="+" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="31" Padding="0,0,0,6"/>
         </Button>

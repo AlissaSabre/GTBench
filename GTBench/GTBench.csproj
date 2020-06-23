@@ -61,12 +61,14 @@
     </Compile>
     <Compile Include="ExceptionDialog.cs" />
     <Compile Include="GlossaryInfo.cs" />
+    <Compile Include="GlossaryInfoToStringConverter.cs" />
     <Compile Include="GlossaryManager.cs" />
     <Compile Include="GlossaryPage.xaml.cs">
       <DependentUpon>GlossaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="ISlidePageController.cs" />
+    <Compile Include="LanguageNames.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
