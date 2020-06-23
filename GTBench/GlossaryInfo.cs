@@ -43,7 +43,7 @@ namespace GTBench
             SourceLanguage = string.Empty;
             TargetLanguage = string.Empty;
             InputUri = string.Empty;
-            Entries = 0;
+            _Entries = 0;
         }
 
         public GlossaryInfo(Glossary glossary, GlossaryStatus status = GlossaryStatus.None)
@@ -74,7 +74,7 @@ namespace GTBench
                     break;
             }
             InputUri = glossary.InputConfig.GcsSource.InputUri;
-            Entries = glossary.EntryCount;
+            _Entries = glossary.EntryCount;
             OnPropertyChanged();
         }
 
@@ -119,7 +119,9 @@ namespace GTBench
 
         public string InputUri { get; private set; }
 
-        public int Entries { get; private set; }
+        private int _Entries;
+
+        public int? Entries => _Status == GlossaryStatus.None ? _Entries : (int?)null;
 
         public bool Alert => Status == GlossaryStatus.Error;
 
