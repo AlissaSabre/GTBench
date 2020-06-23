@@ -42,6 +42,8 @@ namespace GTBench
 
             try
             {
+                languages.ItemsSource = null;
+
                 sb.AppendLine();
                 sb.AppendLine($"Project: {settings.ProjectID}");
                 sb.AppendLine($"Location: {settings.LocationID}");
@@ -57,6 +59,8 @@ namespace GTBench
                 };
 
                 var response = await client.GetSupportedLanguagesAsync(request);
+                languages_label.Text = $"Available languages ({response.Languages.Count})";
+                languages.ItemsSource = response.Languages.Select(lang => lang.LanguageCode + "\t" + lang.DisplayName);
 
                 sb.AppendLine();
                 sb.AppendLine("Google Translate service via Cloud Translation (Advanced) API is working.");
