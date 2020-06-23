@@ -127,6 +127,8 @@ namespace GTBench
 
         public string AlertMessage { get; set; }
 
+        public bool IsDeletable => _Status == GlossaryStatus.None || _Status == GlossaryStatus.Creating;
+
         #region INotifyPropertyChanged implementation
 
         public event PropertyChangedEventHandler PropertyChanged;
