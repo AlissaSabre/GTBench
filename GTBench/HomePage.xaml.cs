@@ -54,7 +54,6 @@ namespace GTBench
                 var request = new GetSupportedLanguagesRequest
                 {
                     DisplayLanguageCode = "en",
-                    Model = GetModelName(),
                     ParentAsLocationName = GetLocationName(),
                 };
 
