@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LocationID" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">us-central1</Value>
     </Setting>
     <Setting Name="ModelID" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -27,7 +27,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MimeType" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">text/plain</Value>
     </Setting>
     <Setting Name="SourceLanguage" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

@@ -37,7 +37,7 @@ namespace GTBench.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("us-central1")]
         public string LocationID {
             get {
                 return ((string)(this["LocationID"]));
@@ -121,7 +121,7 @@ namespace GTBench.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("text/plain")]
         public string MimeType {
             get {
                 return ((string)(this["MimeType"]));

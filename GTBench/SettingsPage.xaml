@@ -20,5 +20,14 @@
         <TextBox Text="{Binding LabelKey, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="161,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
         <Label Content="=" HorizontalAlignment="Left" Margin="286,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.229,0.448"/>
         <TextBox Text="{Binding LabelValue, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="309,143,0,0" TextWrapping="Wrap" Width="120" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+        <TextBlock Margin="42,211,10,10" TextWrapping="Wrap">
+            You need to specify three mandatory parameters to use Translation API on Google Cloud service: <Run FontStyle="Italic">location</Run>, <Run FontStyle="Italic">project</Run>, and <Run FontStyle="Italic">credentials</Run>.
+            <LineBreak /><LineBreak/>
+            A location is specified by a Location ID, and it chooses the datacenter where your request will be processed.
+            As of this writing, the full features of Translation API Advanced is available only on the location <Run FontFamily="Courier New">us-central1</Run>.
+            <LineBreak/><LineBreak/>
+            Credentials to access to Google Cloud Platform are stored in a file typically downloaded from Cloud Platform Console.
+            Specify the full pathname to the credentials json file (e.g., <Run FontFamily="Courier New">C:\Users\Alissa\Documents\credentials-123456789abc.json</Run>) in Credentials File Path field.
+        </TextBlock>
     </Grid>
 </Page>

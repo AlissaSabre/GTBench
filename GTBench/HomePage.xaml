@@ -15,9 +15,10 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Cloud Translation (Advanced) API</TextBlock>
         <TextBox Grid.Row="0" x:Name="status" Margin="0,34,227,0" Padding="10,6,10,10" TextWrapping="Wrap" IsReadOnly="true" VerticalScrollBarVisibility="Auto" BorderThickness="0"/>
-        <TextBlock Grid.Row="0" x:Name="warning" Margin="0,34,227,0" Padding="10,6,10,10" TextWrapping="Wrap">
+        <TextBlock Grid.Row="0" x:Name="warning" Margin="0,34,227,0" Padding="10,6,10,10" TextWrapping="Wrap" Background="White">
             Access to Google Translate service via Cloud Translation (Advanced) API failed.
             Please check your Internet connection and review the <Hyperlink Click="configuration_Click">settings</Hyperlink> of this app.
+            (You don't need to set the environment variable GOOGLE_APPLICATION_CREDENTIALS to use this tool, unless you are willing to do so.)
         </TextBlock>
         <TextBlock Grid.Row="0" x:Name="languages_label" Text="Available languages" Margin="0,38,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="208"/>
         <ListBox Grid.Row="0" x:Name="languages" HorizontalAlignment="Right" Margin="0,64,10,10" Width="200"/>

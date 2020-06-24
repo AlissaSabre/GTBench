@@ -42,6 +42,7 @@ namespace GTBench
 
             try
             {
+                languages_label.Text = string.Empty;
                 languages.ItemsSource = null;
 
                 sb.AppendLine();
