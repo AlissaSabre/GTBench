@@ -9,7 +9,7 @@ Tryout tool for Google's Cloud Translation (Advanced) API
 GTBench is a small Windows tool for developers and/or linguists to try features of Google's Cloud Translation API Advanced, formerly known as Translation API v3, without writing codes by themselves.
 
 Translation API Advanced provides two major features over Translation API Basic (or v2): use of a glossary and/or a custom model.
-The features sounds promising, but there is no easy-to-use way like [Google Transalte](https://translate.google.com) web interface to try those advanced features.
+The features sounds promising, but there is no easy-to-use way like [Google Translate](https://translate.google.com) web interface to try those advanced features.
 
 So, I wrote this tool to experience and evaluate how much it makes translation better.
 
@@ -19,7 +19,7 @@ With GTBench, you can
 * Create a _glossary resource_ on the cloud from an input _glossary file_ you provided, and
 * Try translating some sample texts using the glossary.
 
-You can also spcify a custom model upon translation if you have one already; for the moment GTBench lacks a feature to create a model.  You can always specify on the UI either of the two general models provided by Google: Neural Machine Translation model (`general/nmt`) and Phrase-Based Machine Translation model (`general/base`), however.
+You can also specify a custom model upon translation if you have one already; for the moment GTBench lacks a feature to create a model.  You can always specify on the UI either of the two general models provided by Google: Neural Machine Translation model (`general/nmt`) and Phrase-Based Machine Translation model (`general/base`), however.
 
 GTBench allows you to switch between glossaries (including no glossary) or models easily so that you can compare translation results from a same source text.
 
@@ -46,7 +46,7 @@ Google Translate is used to power translation within GTBench. You can learn more
 
 THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
-GTBench uses [Google.Cloud.Translate.V3 library](https://www.nuget.org/packages/Google.Cloud.Translate.V3/) by Google LLC distributed under [Apach license](https://www.nuget.org/packages/Google.Cloud.Translate.V3/2.0.0/license).
+GTBench uses [Google.Cloud.Translate.V3 library](https://www.nuget.org/packages/Google.Cloud.Translate.V3/) by Google LLC distributed under [Apache license](https://www.nuget.org/packages/Google.Cloud.Translate.V3/2.0.0/license).
 
 GTBench uses [HamburgerMenu](https://www.nuget.org/packages/HamburgerMenu/) by Alican Erdoğan distributed under the [MIT License](https://opensource.org/licenses/MIT).
 
