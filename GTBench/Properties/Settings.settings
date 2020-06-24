@@ -44,5 +44,11 @@
     <Setting Name="MaximumOperationPollInterval" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:00:20</Value>
     </Setting>
+    <Setting Name="NewGlossaryIdPrefix" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">untitled-glossary-</Value>
+    </Setting>
+    <Setting Name="DefaultInputUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">gs://</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -188,13 +188,58 @@ namespace GTBench
             StartPolling();
         }
 
-        public async Task CreateAsync(string input_uri)
+        public class CreateInfo
         {
+            public string GlossaryID { get; set; }
+            public string InputUri { get; set; }
+            public bool EquivalentTermSet { get; set; }
+            public string[] Languages { get; set; }
+        }
+
+        /// <summary>Creates a new <see cref="CreateInfo"/> instance filled with default values.</summary>
+        /// <returns>A new instance.</returns>
+        /// <remarks>I know the name sounds broken... :)</remarks>
+        public CreateInfo CreateDefaultCreateInfo()
+        {
+            return new CreateInfo
+            {
+                GlossaryID = NewGlossaryId(),
+                InputUri = Settings.DefaultInputUri,
+                EquivalentTermSet = false, // i.e., the default is unidirectional.
+                Languages = new[] { Settings.SourceLanguage, Settings.TargetLanguage },
+            };
+        }
+
+        private string NewGlossaryId()
+        {
+            var prefix = Settings.NewGlossaryIdPrefix;
+            var used = List.Select(info => info.GlossaryID).Where(s => s.StartsWith(prefix)).ToHashSet();
+            var max = used.Count + 1;
+            for (int i = 1; i <= max; i++) // XXX
+            {
+                var candidate = prefix + i.ToString();
+                if (!used.Contains(candidate)) return candidate;
+            }
+            // We should never come here.
+            throw new ApplicationException();
+        }
+
+        public async Task CreateAsync(CreateInfo create_info)
+        {
+            if (create_info.Languages == null)
+            {
+                throw new ArgumentException($"{nameof(create_info)}.{nameof(create_info.Languages)} must not be null");
+            }
+            if (create_info.Languages.Length < 2)
+            {
+                throw new ArgumentException($"{nameof(create_info)}.{nameof(create_info.Languages)} must have two or more elements");
+            }
+
             // GCT doesn't allow duplicate glossary id,
             // and we can't because we use it as a _primary key_ in this class.
-            // However, if it is an error info, we can simply remove it.
-            var id = Settings.GlossaryID;
-            if (IndexOf(id) is int p && p >= 0 && List[p].Status == GlossaryStatus.Error)
+            // However, if it is an error or faint info, we can simply remove it.
+            var id = create_info.GlossaryID;
+            if (IndexOf(id) is int p && p >= 0 && (List[p].Status & GlossaryStatus.RemnantFlag) != 0)
             {
                 List.RemoveAt(p);
             }
@@ -207,15 +252,23 @@ namespace GTBench
             {
                 InputConfig = new GlossaryInputConfig
                 {
-                    GcsSource = new GcsSource { InputUri = input_uri },
+                    GcsSource = new GcsSource { InputUri = create_info.InputUri },
                 },
-                LanguagePair = new Glossary.Types.LanguageCodePair
-                {
-                    SourceLanguageCode = Settings.SourceLanguage,
-                    TargetLanguageCode = Settings.TargetLanguage,
-                },
-                Name = GetGlossaryName(),
+                Name = GetGlossaryName(id),
             };
+            if (create_info.EquivalentTermSet)
+            {
+                glossary.LanguageCodesSet = new Glossary.Types.LanguageCodesSet();
+                glossary.LanguageCodesSet.LanguageCodes.Add(create_info.Languages);
+            }
+            else
+            {
+                glossary.LanguagePair = new Glossary.Types.LanguageCodePair
+                {
+                    SourceLanguageCode = create_info.Languages[0],
+                    TargetLanguageCode = create_info.Languages[1],
+                };
+            }
             var client = await GetTranslationServiceClientAsync();
             var operation = await client.CreateGlossaryAsync(GetLocationName(), glossary);
 

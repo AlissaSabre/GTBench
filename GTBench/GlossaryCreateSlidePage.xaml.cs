@@ -25,14 +25,24 @@ namespace GTBench
             InitializeComponent();
         }
 
-        public string InputUri
+        public GlossaryManager.CreateInfo CreateInfo
         {
-            get { return inputUri.Text.Trim(); }
-            set { inputUri.Text = value; }
+            get { return (GlossaryManager.CreateInfo)DataContext; }
+            set
+            {
+                DataContext = value;
+                languages.Text = string.Join(", ", value.Languages);
+            }
         }
+
+        private static readonly char[] Separators = { ' ', ',', ';' };
 
         private void ok_Click(object sender, RoutedEventArgs e)
         {
+            if (CreateInfo.EquivalentTermSet)
+            {
+                CreateInfo.Languages = languages.Text.Split(Separators, StringSplitOptions.RemoveEmptyEntries);
+            }
             Close(true);
         }
 

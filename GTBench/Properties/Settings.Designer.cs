@@ -184,5 +184,23 @@ namespace GTBench.Properties {
                 return ((global::System.TimeSpan)(this["MaximumOperationPollInterval"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("untitled-glossary-")]
+        public string NewGlossaryIdPrefix {
+            get {
+                return ((string)(this["NewGlossaryIdPrefix"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gs://")]
+        public string DefaultInputUri {
+            get {
+                return ((string)(this["DefaultInputUri"]));
+            }
+        }
     }
 }

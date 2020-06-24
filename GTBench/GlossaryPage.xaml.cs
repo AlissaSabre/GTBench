@@ -60,13 +60,17 @@ namespace GTBench
 
         private async void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            var create_page = new GlossaryCreateSlidePage { Controller = this, DataContext = DataContext };
+            var create_page = new GlossaryCreateSlidePage
+            {
+                Controller = this,
+                CreateInfo = GlossaryManager.CreateDefaultCreateInfo(),
+            };
             if (await create_page.ShowDialogAsync())
             {
                 MainWindow.Current.Busy = true;
                 try
                 {
-                    await GlossaryManager.CreateAsync(create_page.InputUri);
+                    await GlossaryManager.CreateAsync(create_page.CreateInfo);
                 }
                 catch (Exception exception)
                 {

@@ -29,7 +29,7 @@ namespace GTBench
 
             var type_string =
                 info.Type == "U" ? $"Unidirectional from {LanguageNames.FromCode(info.SourceLanguage)} to {LanguageNames.FromCode(info.TargetLanguage)}" :
-                info.Type == "M" ? $"Equivalent terms list among {LanguageNames.FromList(info.SourceLanguage)}" :
+                info.Type == "M" ? $"Equivalent term set containing {LanguageNames.FromList(info.SourceLanguage)}" :
                 "(unknown)";
 
             return
