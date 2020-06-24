@@ -5,6 +5,16 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTBench", "GTBench\GTBench.csproj", "{87C8A20A-A5CA-42F2-8C2C-9717E7F424F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65D8726F-85C9-4E4B-8BD9-BD89A8FA9F8C}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7408CB3E-FBD2-4511-B3FE-3D7C39354AC6}"
+	ProjectSection(SolutionItems) = preProject
+		images\screenshot.jpg = images\screenshot.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7408CB3E-FBD2-4511-B3FE-3D7C39354AC6} = {65D8726F-85C9-4E4B-8BD9-BD89A8FA9F8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5C7F10C-6BBE-471E-9E6D-720CC80C23F9}
