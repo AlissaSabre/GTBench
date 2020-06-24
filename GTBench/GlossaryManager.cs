@@ -328,7 +328,20 @@ namespace GTBench
         private void RestoreRunningOperations()
         {
             var data = Settings.RunningGlossaryOperations;
-            foreach (var operation in XElement.Parse(data).Elements("GlossaryOperation"))
+            if (string.IsNullOrWhiteSpace(data)) return;
+            XElement tree;
+            try
+            {
+                tree = XElement.Parse(data);
+            }
+#pragma warning disable 0168
+            catch (Exception exception)
+            {
+                return;
+            }
+#pragma warning restore 0168
+
+            foreach (var operation in tree.Elements("GlossaryOperation"))
             {
                 var type = (string)operation.Attribute("type");
                 var id = (string)operation.Attribute("id");
