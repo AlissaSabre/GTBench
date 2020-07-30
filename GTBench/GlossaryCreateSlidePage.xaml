@@ -9,7 +9,11 @@
       Title="GlossaryCreateSlidePage" Background="White">
 
     <Grid>
-        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">Creating <Run FontStyle="Italic">unidirectional</Run> glossary resource</TextBlock>
+        <TextBlock Padding="6,6,6,6" TextWrapping="NoWrap" Background="LightGray" FontSize="16" VerticalAlignment="Top">
+            <Run>Creating </Run>
+            <Run FontStyle="Italic" Text="{Binding ElementName=unidirectional, Path=IsChecked, Converter={local:BooleanToStringConverter}, ConverterParameter=unidirectional;equivalent\ term\ set}"/>
+            <Run> glossary resource</Run>
+        </TextBlock>
 
         <Label Content="Glossary ID" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding GlossaryID, Mode=TwoWay, Converter={local:StringTrimConverter}}" HorizontalAlignment="Left" Height="23" Margin="130,38,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="160"/>
