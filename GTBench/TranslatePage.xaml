@@ -27,7 +27,7 @@
         <GridSplitter Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Height="5"/>
         <TextBox x:Name="sourceText" Grid.Row="1" BorderThickness="0" TextWrapping="Wrap">Enter source text here.</TextBox>
         <TextBox x:Name="targetText" Grid.Row="3" Margin="0,0,0,25" BorderThickness="0" TextWrapping="Wrap" IsReadOnly="True"/>
-        <Image x:Name="poweredby" Grid.Row="3" Source="Assets/color-regular@3x.png" Margin="0,0,2,0" HorizontalAlignment="Right" Height="20" VerticalAlignment="Bottom" Visibility="{Binding ElementName=targetText, Path=Text, Converter={local:HiddenIfNullOrWhite}}"/>
+        <Image x:Name="poweredby" Grid.Row="3" Source="Assets/color-regular@3x.png" Margin="0,0,2,0" HorizontalAlignment="Right" Height="20" VerticalAlignment="Bottom" Visibility="{Binding ElementName=targetText, Path=Text, Converter={local:HiddenIfNullOrWhite}}" MouseDown="Poweredby_MouseDown"/>
         <Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" BorderBrush="LightGray" BorderThickness="1">
             <Grid Margin="0,1,0,-1">
                 <Button Content="Translate with Google" Margin="10,10,10,0" Padding="6,6,6,6" VerticalAlignment="Top" FontSize="20" IsDefault="True" Click="translateButton_Click"/>

@@ -18,6 +18,7 @@ using Google.Cloud.Translate.V3;
 
 namespace GTBench
 {
+    using System.Diagnostics;
     using System.Globalization;
     using System.Windows.Markup;
     using static Helpers;
@@ -68,6 +69,11 @@ namespace GTBench
             }
 
             MainWindow.Current.Busy = false;
+        }
+
+        private void Poweredby_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Properties.Settings.Default.GoogleTranslateUrl);
         }
     }
 

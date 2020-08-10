@@ -202,5 +202,14 @@ namespace GTBench.Properties {
                 return ((string)(this["DefaultInputUri"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://translate.google.com")]
+        public string GoogleTranslateUrl {
+            get {
+                return ((string)(this["GoogleTranslateUrl"]));
+            }
+        }
     }
 }
