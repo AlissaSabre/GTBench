@@ -11,12 +11,12 @@ GTBench is a small Windows tool for developers and/or linguists to try features 
 Translation API Advanced provides two major features over Translation API Basic (or v2): use of a glossary and/or a custom model.
 The features sounds promising, but there is no easy-to-use way like [Google Translate](https://translate.google.com) web interface to try those advanced features.
 
-So, I wrote this tool to experience and evaluate how much it makes translation better.
+So, I wrote this tool to experiment and evaluate how much it makes translation better.
 
 ## Features of GTBench
 
 With GTBench, you can
-* Create a _glossary resource_ on the cloud from an input _glossary file_ you provided, and
+* Create a _glossary resource_ on the cloud from an input _glossary file_ you provide, and
 * Try translating some sample texts using the glossary.
 
 You can also specify a custom model upon translation if you have one already; for the moment GTBench lacks a feature to create a model.  You can always specify on the UI either of the two general models provided by Google: Neural Machine Translation model (`general/nmt`) and Phrase-Based Machine Translation model (`general/base`), however.
@@ -25,7 +25,7 @@ GTBench allows you to switch between glossaries (including no glossary) or model
 
 ## Running GTBench
 
-GTBench is a .NET Framework 4.7.2 application for Windows 10 PCs written in C#.  No other platforms are supported.
+GTBench is a .NET Framework 4.7.2 application for Windows 10/11 PCs written in C#.  No other platforms are supported.
 You need an appropriate development environment such as Visual Studio 2017 or later to build it.
 
 To use GTBench, you need a Google Cloud Platform account.
